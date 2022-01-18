@@ -1,9 +1,49 @@
 fileFormatVersion: 2
-guid: 826783e91f9febf4281e6d6bf6c3f4dd
+guid: c92ac43c02282434f9db7f2827a3d032
 ModelImporter:
   serializedVersion: 20200
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Eye Shine
+    second: {fileID: 2100000, guid: 58d10ff2d742fc14f8f69e7bfdab2e61, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Eyes
+    second: {fileID: 2100000, guid: 6855f54f21c8d2642b9937d99dcb641f, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Face
+    second: {fileID: 2100000, guid: ce3b38c6919c0294788723ba2bcdd560, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Fur Primary
+    second: {fileID: 2100000, guid: 6bc9c8f24079d0344901928536855fdc, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Fur Secondary
+    second: {fileID: 2100000, guid: 5218556654c39f445913af8a067760af, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Fur Tertiary
+    second: {fileID: 2100000, guid: cbe5318f993422a4f8b877f86a328aef, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Sweater Primary
+    second: {fileID: 2100000, guid: 5574f94a2eae0c34c9d5114316b0d4bf, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Sweater Secondary
+    second: {fileID: 2100000, guid: 4425e50812bdd8d4e8d3c5f8782087bf, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
@@ -39,10 +79,10 @@ ModelImporter:
     addColliders: 0
     useSRGBMaterialColor: 1
     sortHierarchyByName: 1
-    importVisibility: 0
+    importVisibility: 1
     importBlendShapes: 1
-    importCameras: 0
-    importLights: 0
+    importCameras: 1
+    importLights: 1
     fileIdsGeneration: 2
     swapUVChannels: 0
     generateSecondaryUV: 0
@@ -66,7 +106,7 @@ ModelImporter:
     useFileScale: 1
   tangentSpace:
     normalSmoothAngle: 60
-    normalImportMode: 0
+    normalImportMode: 1
     tangentImportMode: 3
     normalCalculationMode: 4
     legacyComputeAllNormalsFromSmoothingGroupsWhenMeshHasBlendShapes: 0
