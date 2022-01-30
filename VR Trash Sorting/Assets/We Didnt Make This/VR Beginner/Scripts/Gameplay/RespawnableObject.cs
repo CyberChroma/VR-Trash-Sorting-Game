@@ -10,10 +10,10 @@ using UnityEngine;
 /// </summary>
 public class RespawnableObject : MonoBehaviour
 {
-    Vector3 m_StartingPosition;
-    Quaternion m_StartingRotation;
+    protected Vector3 m_StartingPosition;
+    protected Quaternion m_StartingRotation;
 
-    Rigidbody m_Rigidbody;
+    protected Rigidbody m_Rigidbody;
     
     void Start()
     {

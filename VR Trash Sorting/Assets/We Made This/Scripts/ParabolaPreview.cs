@@ -8,14 +8,19 @@ public class ParabolaPreview : MonoBehaviour
     public float colliderRadius = 0.2f;
     public int maxSimulationTime = 5;
     public float simulationInterval = 0.1f;
+    public float timerDuration = 5;
 
     private LineRenderer line;
     private Rigidbody rb;
+    private float timer;
+    private bool timerSet;
+    private Vector3 lastEndpoint;
 
     void Start()
     {
         line = GetComponent<LineRenderer>();
         rb = GetComponent<Rigidbody>();
+        lastEndpoint = transform.position;
     }
 
     void Update()
@@ -27,11 +32,17 @@ public class ParabolaPreview : MonoBehaviour
             for(int i = 0; i < pointList.Count; i++)
             {
                 
-                Debug.Log("Added point " + i + ": " + pointList[i].ToString());
+                //Debug.Log("Added point " + i + ": " + pointList[i].ToString());
                 line.SetPosition(i, pointList[i]);
             }
-            
-            
+            lastEndpoint = pointList[pointList.Count - 1];
+
+            if (timerSet)
+            {
+                timer = Mathf.Max(0, timer - Time.deltaTime);
+                if(timer == 0)
+                    DisableLine();
+            }
         }
     }
 
@@ -41,10 +52,23 @@ public class ParabolaPreview : MonoBehaviour
         lineEnabled = true;
     }
 
+    public void TempEnable()
+    {
+        timer = timerDuration;
+        timerSet = true;
+        EnableLine();
+    }
+
     public void DisableLine()
     {
         line.enabled = false;
         lineEnabled = false;
+        timerSet = false;
+    }
+
+    public Vector3 GetCalcEndpoint()
+    {
+        return lastEndpoint;
     }
 
     // Simulate an arc that represents a free-falling object's movement path
@@ -73,27 +97,35 @@ public class ParabolaPreview : MonoBehaviour
             points.Add(newVector);
 
             // Stop calculating if a collision is detected
-            if (HasCollided(newVector))
+            if (HasCollided(newVector, points[Mathf.Max(i-1, 0)]))
             {
                 break;
             }
         }
 
-        Debug.Log(points.Count);
+        //Debug.Log(points.Count);
         return points;
     }
 
     // Check if a collision has occured in a radius
-    private bool HasCollided(Vector3 centre)
+    private bool HasCollided(Vector3 centre, Vector3 oldCentre)
     {
+        // First check in a radius around the object
         //return Physics.CheckSphere(centre, colliderRadius);
         Collider[] cList = Physics.OverlapSphere(centre, colliderRadius);
         foreach(Collider c in cList)
         {
             // Reveal the collisions
-            Debug.Log(c.gameObject.name);
+            //Debug.Log(c.gameObject.name);
         }
-        if (cList.Length > 1)
+
+        // Next check if there is a collision between step points
+        Vector3 stepPath = centre - oldCentre;
+        RaycastHit[] rList = Physics.RaycastAll(oldCentre, stepPath.normalized, stepPath.magnitude);
+        Debug.Log(rList.Length);
+
+        // Since it will always collide with itself, check to see if it hit anything
+        if (cList.Length > 1 || rList.Length > 0)
             return true;
         return false;
     }
