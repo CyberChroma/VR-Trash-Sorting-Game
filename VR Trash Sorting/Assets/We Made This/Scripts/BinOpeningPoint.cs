@@ -8,6 +8,8 @@ public class BinOpeningPoint : MonoBehaviour
     public static List<Vector3> openingPoints = new List<Vector3>();
 
     public Vector3 openingCentre = Vector3.zero;
+    [Range(0, 10)]
+    public float radius = 0f;
 
     /// <summary>
     /// Given a position, returns the closest bin opening to given position.
@@ -45,6 +47,8 @@ public class BinOpeningPoint : MonoBehaviour
     {
         Gizmos.color = Color.grey;
         Gizmos.DrawSphere(transform.position + openingCentre, 0.03f);
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireSphere(transform.position, radius);
     }
 
 }

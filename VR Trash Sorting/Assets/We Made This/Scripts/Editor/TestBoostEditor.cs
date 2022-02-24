@@ -22,6 +22,6 @@ public class TestBoostEditor : Editor
     {
         tb.LaunchForce = Handles.ScaleValueHandle(tb.LaunchForce, tb.transform.position, tb.LaunchDirection, tb.LaunchForce * 0.2f, Handles.ArrowHandleCap, 0.1f);
         tb.LaunchDirection = Handles.RotationHandle(tb.LaunchDirection, tb.transform.position);
-        Handles.DrawLine(tb.transform.position, tb.transform.position + tb.LaunchDirection * Vector3.forward);
+        //Handles.DrawAAPolyLine(tb.transform.position, tb.transform.position + tb.LaunchDirection * Vector3.forward * (tb.LaunchForce * 0.2f));
     }
 }

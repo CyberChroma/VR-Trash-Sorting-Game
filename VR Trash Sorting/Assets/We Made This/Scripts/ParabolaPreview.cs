@@ -96,9 +96,11 @@ public class ParabolaPreview : MonoBehaviour
             Vector3 newVector = new Vector3(newx, newy, newz);
             points.Add(newVector);
 
-            // Stop calculating if a collision is detected
-            if (HasCollided(newVector, points[Mathf.Max(i-1, 0)]))
+            // Stop calculating if a collision is detected, set the last point to the collision zone
+            (bool, Vector3) col = HasCollided(newVector, points[Mathf.Max(i - 1, 0)]);
+            if (col.Item1)
             {
+                points[i] = col.Item2;
                 break;
             }
         }
@@ -108,26 +110,31 @@ public class ParabolaPreview : MonoBehaviour
     }
 
     // Check if a collision has occured in a radius
-    private bool HasCollided(Vector3 centre, Vector3 oldCentre)
+    private (bool, Vector3) HasCollided(Vector3 centre, Vector3 oldCentre)
     {
-        // First check in a radius around the object
-        //return Physics.CheckSphere(centre, colliderRadius);
+        // First check in a radius around the object - finds any objects that this might collide with
         Collider[] cList = Physics.OverlapSphere(centre, colliderRadius);
-        foreach(Collider c in cList)
+        /*foreach(Collider c in cList)
         {
             // Reveal the collisions
-            //Debug.Log(c.gameObject.name);
-        }
+            Debug.Log(c.gameObject.name);
+        }*/
 
         // Next check if there is a collision between step points
         Vector3 stepPath = centre - oldCentre;
         RaycastHit[] rList = Physics.RaycastAll(oldCentre, stepPath.normalized, stepPath.magnitude);
-        Debug.Log(rList.Length);
+        //Debug.Log(rList.Length);
+        if(rList.Length > 0)
+        {
+            // The Vector3 return value is a way to correct the length of the line (but its kind of lazy)
+            return (true, rList[0].point);
+        }
 
         // Since it will always collide with itself, check to see if it hit anything
-        if (cList.Length > 1 || rList.Length > 0)
-            return true;
-        return false;
+        if (cList.Length > 1)
+            return (true, centre);
+
+        return (false, Vector3.zero);
     }
 
     private void OnDrawGizmosSelected()

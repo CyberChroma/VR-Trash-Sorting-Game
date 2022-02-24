@@ -9,11 +9,13 @@ public class TestBoost : MonoBehaviour
     public float LaunchForce = 1f;
 
     private Rigidbody rb;
+    private AimAssist aa;
     private float countdown;
 
     void Start()
     {
         rb = GetComponent<Rigidbody>();
+        aa = GetComponent<AimAssist>();
         countdown = LaunchAfterSeconds;
     }
 
@@ -22,7 +24,11 @@ public class TestBoost : MonoBehaviour
     {
         if(countdown <= 0)
         {
+            // Launch!
             rb.AddForce(LaunchDirection * Vector3.forward * LaunchForce, ForceMode.VelocityChange);
+
+            // Activate Aim Assist (if it exists)
+            if (aa != null) aa.EnableOnce();
             
 
             countdown = LaunchAfterSeconds;
