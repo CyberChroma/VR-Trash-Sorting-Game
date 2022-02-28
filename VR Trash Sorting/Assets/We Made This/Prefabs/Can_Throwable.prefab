@@ -20,7 +20,7 @@ GameObject:
   - component: {fileID: 3430445412326580895}
   - component: {fileID: 6230821492472512954}
   - component: {fileID: 7007914288657716871}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Can_Throwable
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -138,7 +138,7 @@ MonoBehaviour:
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
-        m_CallState: 2
+        m_CallState: 0
   m_LastHoverExited:
     m_PersistentCalls:
       m_Calls:
@@ -153,7 +153,7 @@ MonoBehaviour:
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
-        m_CallState: 2
+        m_CallState: 0
   m_HoverEntered:
     m_PersistentCalls:
       m_Calls: []
@@ -174,7 +174,7 @@ MonoBehaviour:
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
-        m_CallState: 2
+        m_CallState: 0
       - m_Target: {fileID: 1347556285043636869}
         m_TargetAssemblyTypeName: ParabolaPreview, Assembly-CSharp
         m_MethodName: DisableLine
@@ -201,7 +201,7 @@ MonoBehaviour:
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
-        m_CallState: 2
+        m_CallState: 0
       - m_Target: {fileID: 1347556285043636869}
         m_TargetAssemblyTypeName: ParabolaPreview, Assembly-CSharp
         m_MethodName: TempEnable
@@ -466,6 +466,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Range: 100
+  MinSize: 0.25
 --- !u!114 &7007914288657716871
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -478,6 +479,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 99b6aa2d9b93b8a4e849d73c46689c8a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxCorrectiveDistance: 1.2
+  maxCorrectiveDistance: 2.2
   fixedTicksBeforeCorrection: 4
-  assist: 0
+  maxEndpointIterations: 10
+  correctionDelay: 0

@@ -26,7 +26,7 @@ public class ParabolaPreview : MonoBehaviour
     void Update()
     {
         if(lineEnabled){
-            List<Vector3> pointList = CalculateLine();
+            List<Vector3> pointList = CalculateLine(Vector3.zero);
             // Clear any points from previous frame
             line.positionCount = pointList.Count;
             for(int i = 0; i < pointList.Count; i++)
@@ -71,8 +71,16 @@ public class ParabolaPreview : MonoBehaviour
         return lastEndpoint;
     }
 
+    // Using provided offset, predict new trajectory and return the last point
+    public Vector3 CalcNewEndpoint(Vector3 offset)
+    {
+        List<Vector3> calculatedPoints = CalculateLine(offset);
+
+        return calculatedPoints[calculatedPoints.Count - 1];
+    }
+
     // Simulate an arc that represents a free-falling object's movement path
-    private List<Vector3> CalculateLine()
+    private List<Vector3> CalculateLine(Vector3 offset)
     {
         // Don't read from a global every time
         float iv = simulationInterval;
@@ -82,7 +90,7 @@ public class ParabolaPreview : MonoBehaviour
         List<Vector3> points = new List<Vector3>();
         // Init pos and velocity
         Vector3 initPos = rb.position;
-        Vector3 curV = rb.velocity;
+        Vector3 curV = rb.velocity + offset;    // Add offset to velocity
 
         for(int i = 0; i < ms; i++)
         {
