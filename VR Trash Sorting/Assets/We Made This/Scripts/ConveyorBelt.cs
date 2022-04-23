@@ -5,28 +5,33 @@ using UnityEngine;
 public class ConveyorBelt : MonoBehaviour
 {
     public float speed;
-    public Vector3 direction;
-    public List<GameObject> onBelt;
+
+    private List<Rigidbody> onBelt = new List<Rigidbody>();
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
         for(int i = 0; i <= onBelt.Count - 1; i++)
         {
-            onBelt[i].GetComponent<Rigidbody>().velocity = speed * direction * Time.deltaTime;
+            onBelt[i].velocity = transform.right * speed;
         }
     }
 
     //When something collides with the belt:
     private void OnCollisionEnter(Collision collision)
     {
-        onBelt.Add(collision.gameObject);
+        Rigidbody rb = collision.gameObject.GetComponent<Rigidbody>();
+        if (rb != null) {
+            onBelt.Add(collision.gameObject.GetComponent<Rigidbody>());
+        }
     }
 
     //When object leaves the belt:
     private void OnCollisionExit(Collision collision)
     {
-        onBelt.Remove(collision.gameObject);
-        Destroy(collision.gameObject);
+        Rigidbody rb = collision.gameObject.GetComponent<Rigidbody>();
+        if (rb != null) {
+            onBelt.Remove(collision.gameObject.GetComponent<Rigidbody>());
+        }
     }
 }

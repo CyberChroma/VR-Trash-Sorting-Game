@@ -25,7 +25,7 @@ public class ContactSoundPlayer : MonoBehaviour
     void OnCollisionEnter(Collision other)
     {
         //avoid playing hit sound when all physic object settle at the load of the level.
-        if (Time.timeSinceLevelLoad < 1.0f)
+        /*if (Time.timeSinceLevelLoad < 1.0f)
             return;
         
         AudioClip randomClip = Clips[Random.Range(0, Clips.Length)];
@@ -35,6 +35,6 @@ public class ContactSoundPlayer : MonoBehaviour
             Volume = 1.0f,
             Pitch = Random.Range(0.8f, 1.2f),
             SourceID = m_ID
-        }, 0.5f, CloseCaptioned);
+        }, 0.5f, CloseCaptioned);*/
     }
 }
