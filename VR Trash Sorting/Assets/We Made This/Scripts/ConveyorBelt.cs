@@ -4,16 +4,32 @@ using UnityEngine;
 
 public class ConveyorBelt : MonoBehaviour
 {
-    public float speed;
+    public float speed = 1;
+    public float scrollSpeed = 1;
 
+    private Material conveyorMat;
     private List<Rigidbody> onBelt = new List<Rigidbody>();
+
+    private void Start()
+    {
+        conveyorMat = GetComponent<MeshRenderer>().material;
+    }
+
+    private void Update()
+    {
+        conveyorMat.mainTextureOffset = new Vector2(0, conveyorMat.mainTextureOffset.y - scrollSpeed * Time.deltaTime);
+    }
 
     // Update is called once per frame
     void FixedUpdate()
     {
         for(int i = 0; i <= onBelt.Count - 1; i++)
         {
-            onBelt[i].velocity = transform.right * speed;
+            if (onBelt[i] != null) {
+                onBelt[i].velocity = transform.right * speed;
+            } else {
+                onBelt.Remove(onBelt[i]);
+            }
         }
     }
 
