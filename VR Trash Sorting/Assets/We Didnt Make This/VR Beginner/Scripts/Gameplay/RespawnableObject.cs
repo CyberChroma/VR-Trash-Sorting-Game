@@ -10,10 +10,12 @@ using UnityEngine;
 /// </summary>
 public class RespawnableObject : MonoBehaviour
 {
-    Vector3 m_StartingPosition;
-    Quaternion m_StartingRotation;
+    // Changed to protected, added scale
+    protected Vector3 m_StartingPosition;
+    protected Quaternion m_StartingRotation;
+    protected Vector3 m_StartingScale;
 
-    Rigidbody m_Rigidbody;
+    protected Rigidbody m_Rigidbody;
     
     void Start()
     {
@@ -29,6 +31,8 @@ public class RespawnableObject : MonoBehaviour
             m_StartingPosition = m_Rigidbody.position;
             m_StartingRotation = m_Rigidbody.rotation;
         }
+
+        m_StartingScale = transform.localScale;
     }
 
     public void Respawn()
@@ -45,5 +49,7 @@ public class RespawnableObject : MonoBehaviour
             m_Rigidbody.position = m_StartingPosition;
             m_Rigidbody.rotation = m_StartingRotation;
         }
+
+        transform.localScale = m_StartingScale;
     }
 }
