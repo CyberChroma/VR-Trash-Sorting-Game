@@ -120,8 +120,11 @@ public class ParabolaPreview : MonoBehaviour
     // Check if a collision has occured in a radius
     private (bool, Vector3) HasCollided(Vector3 centre, Vector3 oldCentre)
     {
+        // Make LayerMask to ignore collidors with layer = "Hands" (9)
+        int layermask = ~(1 << 9);
+
         // First check in a radius around the object - finds any objects that this might collide with
-        Collider[] cList = Physics.OverlapSphere(centre, colliderRadius);
+        Collider[] cList = Physics.OverlapSphere(centre, colliderRadius, layermask);
         /*foreach(Collider c in cList)
         {
             // Reveal the collisions
@@ -130,7 +133,7 @@ public class ParabolaPreview : MonoBehaviour
 
         // Next check if there is a collision between step points
         Vector3 stepPath = centre - oldCentre;
-        RaycastHit[] rList = Physics.RaycastAll(oldCentre, stepPath.normalized, stepPath.magnitude);
+        RaycastHit[] rList = Physics.RaycastAll(oldCentre, stepPath.normalized, stepPath.magnitude, layermask);     // Currently RaycastAll for debug purposes, Raycast should be more efficient
         //Debug.Log(rList.Length);
         if(rList.Length > 0)
         {

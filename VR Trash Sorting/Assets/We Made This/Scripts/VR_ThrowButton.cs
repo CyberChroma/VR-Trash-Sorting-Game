@@ -7,7 +7,7 @@ using UnityEngine.Events;
 public class VR_ThrowButton : MonoBehaviour
 {
     // Cooldown in seconds the button will wait
-    [SerializeField]
+    [SerializeField][Min(0f)]
     private float ButtonCooldown = 1;
     public float buttonCooldown
     {
