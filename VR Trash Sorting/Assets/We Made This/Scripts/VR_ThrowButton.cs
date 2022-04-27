@@ -23,7 +23,8 @@ public class VR_ThrowButton : MonoBehaviour
     }
 
     private Button butt;
-    
+
+
     // UnityEvents that can be attached to button
     [SerializeField]
     private UnityEvent OnHit;
