@@ -9,11 +9,12 @@ public class VRMenu : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        animator = gameObject.GetComponent<Animator>();
+        animator = GetComponent<Animator>();
     }
 
     public void KillSelf()
     {
         gameObject.SetActive(false);
     }
+
 }
