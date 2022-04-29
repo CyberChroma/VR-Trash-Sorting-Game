@@ -10,14 +10,16 @@ public class ConveyorObjectSpawner : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        StartCoroutine(SpawnObject());
+        if (spawnTime != 0) {
+            StartCoroutine(SpawnObject());
+        }
     }
 
     IEnumerator SpawnObject()
     {
         while (true) {
             yield return new WaitForSeconds(spawnTime);
-            Instantiate(objToSpawn, this.transform);
+            Instantiate(objToSpawn, transform);
         }
     }
 }
