@@ -397,4 +397,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fd5b8358a6bdbeb4eb291941500750fe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  trashType: 0
+  trashType: 3
