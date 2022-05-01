@@ -5,7 +5,7 @@ using UnityEngine;
 public class BinOpeningPoint : MonoBehaviour
 {
     // Trying some wack-ass static list stuff to combine all opening points
-    public static List<Vector3> openingPoints = new List<Vector3>();
+    public static HashSet<Vector3> openingPoints = new HashSet<Vector3>();
 
     public Vector3 openingCentre = Vector3.zero;
     [Range(0, 10)]
@@ -37,11 +37,11 @@ public class BinOpeningPoint : MonoBehaviour
 
     
 
-    private void Start()
+    /*private void Start()
     {
         // On start, add every opening point to a big list
         BinOpeningPoint.openingPoints.Add(transform.position + openingCentre);
-    }
+    }*/
 
     private void OnDrawGizmosSelected()
     {
@@ -51,4 +51,15 @@ public class BinOpeningPoint : MonoBehaviour
         Gizmos.DrawWireSphere(transform.position, radius);
     }
 
+    private void OnEnable()
+    {
+        // On enable, subscribe opening point to a big list
+        BinOpeningPoint.openingPoints.Add(transform.position + openingCentre);
+    }
+
+    private void OnDisable()
+    {
+        // On disable, unsubscribe opening point from list
+        BinOpeningPoint.openingPoints.Remove(transform.position + openingCentre);
+    }
 }
