@@ -8,12 +8,22 @@ ModelImporter:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: Blue
-    second: {fileID: 2100000, guid: 9c49abab905629b479f0c7c572637a6f, type: 2}
+    second: {instanceID: 0}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: Sink
     second: {fileID: 2100000, guid: 9c49abab905629b479f0c7c572637a6f, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Sink2
+    second: {fileID: 2100000, guid: a702d74b7ed3364468fe2408dd659959, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: SinkInside
+    second: {fileID: 2100000, guid: d33221385a6641040ad77bd6706632d9, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
