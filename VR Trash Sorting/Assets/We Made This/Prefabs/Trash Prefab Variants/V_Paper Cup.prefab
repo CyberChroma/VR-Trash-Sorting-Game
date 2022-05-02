@@ -12,9 +12,9 @@ GameObject:
   - component: {fileID: 425392609672381655}
   - component: {fileID: 873454858155460728}
   - component: {fileID: 7784546212595637539}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Lid
-  m_TagString: Untagged
+  m_TagString: Trash
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

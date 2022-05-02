@@ -13,7 +13,6 @@ public class TrashReceiver : MonoBehaviour
         scoreUI = FindObjectOfType<ScoreUI>();
     }
 
-    // Update is called once per frame
     void Update()
     {
         

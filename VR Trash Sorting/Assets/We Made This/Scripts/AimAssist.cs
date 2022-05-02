@@ -48,10 +48,10 @@ public class AimAssist : MonoBehaviour
 
     // Instead of doing a bunch of iterations in one tick, spread out calculations over a series of frames
     // Now also enables the pp line
-    private void Update()
+    private void POUpdate()             // Test: changed to POUpdate
     {
         // No calc done if -1
-        if(assist >= 0)
+        while(assist >= 0)              // Test: changed to while
         {
             // Calculate newest endpoint
             Vector3 newEndpoint = pp.CalcNewEndpoint(savedCorrection);
@@ -88,14 +88,19 @@ public class AimAssist : MonoBehaviour
 
     private void FixedUpdate()
     {
+        if(correctionDelay < 0)
+        {
+            // Nothing! But prevents the next two checks from being done
+        }
         // Need delay to pass by obstacles, needs to be physics tick for things to move first
-        if(correctionDelay >= fixedTicksBeforeCorrection)
+        else if(correctionDelay >= fixedTicksBeforeCorrection)
         {
             // Enough time has passed, start calculations
             assist = 0;
             correctionDelay = -1;
+            POUpdate();                         // Test: added function call
         }
-        else if(correctionDelay >= 0)
+        else //if(correctionDelay >= 0)
         {
             correctionDelay++;
         }

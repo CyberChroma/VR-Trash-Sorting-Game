@@ -10,6 +10,7 @@ public class BinOpeningPoint : MonoBehaviour
     public Vector3 openingCentre = Vector3.zero;
     [Range(0, 10)]
     public float radius = 0f;
+    private Vector3 generatedTransformPoint;
 
     /// <summary>
     /// Given a position, returns the closest bin opening to given position.
@@ -48,18 +49,21 @@ public class BinOpeningPoint : MonoBehaviour
         Gizmos.color = Color.grey;
         Gizmos.DrawSphere(transform.position + openingCentre, 0.03f);
         Gizmos.color = Color.red;
-        Gizmos.DrawWireSphere(transform.position, radius);
+        Gizmos.DrawWireSphere(transform.position + openingCentre, radius);
     }
 
     private void OnEnable()
     {
         // On enable, subscribe opening point to a big list
-        BinOpeningPoint.openingPoints.Add(transform.position + openingCentre);
+        generatedTransformPoint = transform.position + openingCentre;
+        BinOpeningPoint.openingPoints.Add(generatedTransformPoint);
+        Debug.Log("Adding self, size: " + BinOpeningPoint.openingPoints.Count);
     }
 
     private void OnDisable()
     {
         // On disable, unsubscribe opening point from list
-        BinOpeningPoint.openingPoints.Remove(transform.position + openingCentre);
+        BinOpeningPoint.openingPoints.Remove(generatedTransformPoint);
+        Debug.Log("Removing self, size: " + BinOpeningPoint.openingPoints.Count);
     }
 }

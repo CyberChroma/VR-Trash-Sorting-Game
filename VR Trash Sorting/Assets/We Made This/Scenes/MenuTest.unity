@@ -6829,7 +6829,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1259684917}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4ff8bfff9f045e548b3f3d4b976ef909, type: 3}
   m_Name: 
@@ -8207,7 +8207,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1645965890
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8223,6 +8223,12 @@ MonoBehaviour:
   moveSpeed: 5
   cameraSensitivity: 1
   maxCameraAngle: 90
+  pickupRadius: 2
+  throwForce: 10
+  snapTime: 0.2
+  snappedItemPosition: {x: 0.1, y: 0, z: 0.4}
+  uiReticle: {fileID: 0}
+  itemSpawner: {fileID: 0}
 --- !u!114 &1645965891
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9524,7 +9530,6 @@ MonoBehaviour:
   maxCorrectiveDistance: 5
   fixedTicksBeforeCorrection: 1
   maxEndpointIterations: 10
-  correctionDelay: 0
 --- !u!114 &1826294141
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11306,7 +11311,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1947440454
 Transform:
   m_ObjectHideFlags: 0

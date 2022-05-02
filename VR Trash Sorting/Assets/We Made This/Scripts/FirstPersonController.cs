@@ -82,6 +82,12 @@ public class FirstPersonController : MonoBehaviour
         hit.rigidbody.useGravity = false;
         hit.rigidbody.constraints = RigidbodyConstraints.FreezeAll;
         hit.collider.transform.parent = transform;
+        // Disabling autoaim on the object
+        ParabolaPreview pp = heldItem.GetComponent<ParabolaPreview>();
+        if(pp != null)
+        {
+            pp.DisableLine();
+        }
         StartCoroutine(SnapHeldItemToPositionCoroutine());
     }
 
@@ -91,6 +97,12 @@ public class FirstPersonController : MonoBehaviour
         heldItem.GetComponent<Rigidbody>().useGravity = true;
         heldItem.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.None;
         heldItem.GetComponent<Rigidbody>().AddForce(transform.forward * throwForce, ForceMode.Impulse);
+        // Enabling the autoaim on the component - Michael ;)
+        AimAssist aa = heldItem.GetComponent<AimAssist>();
+        if (aa != null)
+        {
+            aa.EnableOnce();
+        }
         isHoldingItem = false;
         heldItem = null;
     }
