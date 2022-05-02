@@ -26,12 +26,12 @@ public class TrashReceiver : MonoBehaviour
             if (trashItem.trashType == trashType) {
                 print("Correct Sorting!");
                 scoreUI.AddScore();
-                Destroy(other);
+                Destroy(other.gameObject);
             }
             else {
                 print("Incorrect Sorting!");
                 scoreUI.DeductScore();
-                Destroy(other);
+                Destroy(other.gameObject);
             }
         }
     }
