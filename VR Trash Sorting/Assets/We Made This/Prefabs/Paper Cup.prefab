@@ -115,6 +115,7 @@ GameObject:
   - component: {fileID: -2791363516246046198}
   - component: {fileID: 4616565935641174171}
   - component: {fileID: 2674525214205582341}
+  - component: {fileID: -4710579330780052161}
   m_Layer: 8
   m_Name: Paper Cup
   m_TagString: Trash
@@ -505,3 +506,17 @@ MonoBehaviour:
   maxCorrectiveDistance: 0.9
   fixedTicksBeforeCorrection: 1
   maxEndpointIterations: 8
+--- !u!114 &-4710579330780052161
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5876809349148110938}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 00e76e7332ad86140b53259bd5727655, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ShrinkScale: 0.9
+  MinSize: 0.18
