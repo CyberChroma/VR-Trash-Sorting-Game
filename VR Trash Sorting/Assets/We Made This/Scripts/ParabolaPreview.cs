@@ -2,13 +2,19 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(Rigidbody), typeof(LineRenderer))]
 public class ParabolaPreview : MonoBehaviour
 {
-    public bool lineEnabled = false;
-    public float colliderRadius = 0.2f;
-    public int maxSimulationTime = 5;
-    public float simulationInterval = 0.1f;
-    public float timerDuration = 5;
+    [SerializeField]
+    private bool lineEnabled = false;   // Whether the line is enabled or not (Debug)
+    [SerializeField]
+    private float colliderRadius = 0f;    // How large the spherecast check will look
+    [SerializeField]
+    private int maxSimulationTime = 5;      // Maximum simulation time for the line
+    [SerializeField]
+    private float simulationInterval = 0.1f;    // How far apart each simulation step will be in terms of time
+    [SerializeField]
+    private float timerDuration = 2.5f;    // How long line stays enabled with TempEnable()
 
     private LineRenderer line;
     private Rigidbody rb;

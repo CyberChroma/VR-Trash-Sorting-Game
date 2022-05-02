@@ -2,17 +2,23 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+/*
+ * So kinda big issue, but this only works as long as we have more updates than fixedupdates
+ * Essentially, we want the framerate of the game to be higher than the physics update rate
+ * That way, we can do calculations inbetween fixed update steps, then push when they are ready
+ */
+
+[RequireComponent(typeof(ParabolaPreview))]
 public class AimAssist : MonoBehaviour
 {
     // When enabled, this class will move the connected rigidbody to the closest bin opening
-    [Min(0f)]
-    public float maxCorrectiveDistance = 1.2f;
-    [Range(0, 12)]
-    public int fixedTicksBeforeCorrection = 5;
-    [Range(0, 30)]
-    public int maxEndpointIterations = 8;
+    [Min(0f)][SerializeField]
+    private float maxCorrectiveDistance = 1.2f;
+    [Range(0, 12)][SerializeField]
+    private int fixedTicksBeforeCorrection = 0;
+    [Range(0, 30)][SerializeField]
+    private int maxEndpointIterations = 2;
 
-    [SerializeField]
     private int correctionDelay;
     private int assist;     // Determines which stage the assist is in
     //[SerializeField]
@@ -41,6 +47,7 @@ public class AimAssist : MonoBehaviour
     }
 
     // Instead of doing a bunch of iterations in one tick, spread out calculations over a series of frames
+    // Now also enables the pp line
     private void Update()
     {
         // No calc done if -1
@@ -69,6 +76,9 @@ public class AimAssist : MonoBehaviour
                 // Whether the assist was successful or not, we disable the assist
                 assist = -2;
 
+                // And now we enable the line as well
+                pp.TempEnable();
+
             }
             // Increment assist, update endpoint
             assist++;
@@ -92,7 +102,7 @@ public class AimAssist : MonoBehaviour
     }
 
 
-    /* moving this to update, keeping this all in case of a revert
+    /* moving this to update, keeping this all in case of a revert, this was before there was Enable and not just EnableOnce
     private void FixedUpdate()
     {
         // Three stages: Pre-assist activation, post assist activation, and  assist application
