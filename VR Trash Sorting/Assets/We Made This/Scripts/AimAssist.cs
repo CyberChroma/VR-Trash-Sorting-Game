@@ -28,13 +28,18 @@ public class AimAssist : MonoBehaviour
     // Vector calulation stuff
     private Vector3 savedCorrection;
     private Vector3 previousEndpoint;
+    // Debug Stuff
+    private Vector3 binPoint;
+    private List<Vector3> binPoints;
+    private List<Vector3> calculatedPoints;
+    private List<Vector3> endPoints;
 
     public void EnableOnce()
     {
         correctionDelay = 0;
         savedCorrection = Vector3.zero;
         previousEndpoint = Vector3.zero;
-        //Debug.LogError("We throin");
+        Debug.LogError("We throin");
     }
 
     private void Start()
@@ -44,6 +49,9 @@ public class AimAssist : MonoBehaviour
         //yMult = 1;
         rb = GetComponent<Rigidbody>();
         pp = GetComponent<ParabolaPreview>();
+        binPoints = new List<Vector3>();
+        calculatedPoints = new List<Vector3>();
+        endPoints = new List<Vector3>();
     }
 
     // Instead of doing a bunch of iterations in one tick, spread out calculations over a series of frames
@@ -55,19 +63,42 @@ public class AimAssist : MonoBehaviour
         {
             // Calculate newest endpoint
             Vector3 newEndpoint = pp.CalcNewEndpoint(savedCorrection);
+            endPoints.Add(newEndpoint);
 
             // Find closest bin
-            Vector3 dest = BinOpeningPoint.FindClosestOpening(newEndpoint);
+            Vector3 dest;
+            if (assist == 0)
+            {
+                dest = BinOpeningPoint.FindClosestOpening(newEndpoint);
+                binPoint = dest;
+            }
+            else
+            {
+                dest = binPoint;
+            }
+
+            binPoints.Add(dest);
             // Add new correction iteraton to this iteration
             savedCorrection += (dest - newEndpoint);
+            calculatedPoints.Add(savedCorrection);
 
             // Apply the correction if: (not first iteration AND iterated endpoints are similar) OR max iterations have been reached
             if((assist != 0 && Vector3.Distance(newEndpoint, previousEndpoint) < 0.01f) || assist >= maxEndpointIterations)
             {
                 // Check if throw is in cylinder range of the chosen bin
+                /*Range Check V1
                 Vector3 tempCorr = savedCorrection;
                 tempCorr.y = 0;
-                if(tempCorr.magnitude <= maxCorrectiveDistance)
+
+                Debug.Log("Calculated distance = " + tempCorr.magnitude + ", while max accepted distance is = " + maxCorrectiveDistance);
+                if(tempCorr.magnitude <= maxCorrectiveDistance)*/
+
+                //Range check V2
+                Vector3 tempCorr = endPoints[0];
+                tempCorr.y = dest.y;
+                float calcDist = Vector3.Distance(tempCorr, dest);
+                Debug.Log("Calculated distance = " + calcDist + ", while max accepted distance is = " + maxCorrectiveDistance);
+                if (calcDist <= maxCorrectiveDistance)
                 {
                     // Finally, apply force
                     Debug.Log("Final correction vector: (x: " + savedCorrection.x + ", y: " + savedCorrection.y + ", z: " + savedCorrection.z + ")\nNeeded iterations: " + assist);
@@ -98,11 +129,41 @@ public class AimAssist : MonoBehaviour
             // Enough time has passed, start calculations
             assist = 0;
             correctionDelay = -1;
+
+            binPoints.Clear();
+            calculatedPoints.Clear();
+            endPoints.Clear();
             POUpdate();                         // Test: added function call
         }
         else //if(correctionDelay >= 0)
         {
             correctionDelay++;
+        }
+    }
+
+    private void OnDrawGizmos()
+    {
+        if(calculatedPoints != null && calculatedPoints.Count > 0)
+        {
+            Gizmos.color = Color.blue;
+            foreach (Vector3 v in binPoints)
+            {
+                Gizmos.DrawSphere(v, 0.04f);
+            }
+            Gizmos.color = Color.red;
+            float i = 0;
+            foreach(Vector3 v in calculatedPoints)
+            {
+                Gizmos.DrawSphere(v, 0.02f + i);
+                i += 0.003f;
+            }
+            Gizmos.color = Color.green;
+            i = 0;
+            foreach (Vector3 v in endPoints)
+            {
+                Gizmos.DrawSphere(v, 0.02f + i);
+                i += 0.003f;
+            }
         }
     }
 

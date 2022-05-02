@@ -97,11 +97,13 @@ public class FirstPersonController : MonoBehaviour
         heldItem.GetComponent<Rigidbody>().useGravity = true;
         heldItem.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.None;
         heldItem.GetComponent<Rigidbody>().AddForce(transform.forward * throwForce, ForceMode.Impulse);
-        // Enabling the autoaim on the component - Michael ;)
+        // Enabling the autoaim on the component
         AimAssist aa = heldItem.GetComponent<AimAssist>();
-        if (aa != null)
+        //ParabolaPreview pp = heldItem.GetComponent<ParabolaPreview>();
+        if (aa != null /*&& pp != null*/)
         {
             aa.EnableOnce();
+            //pp.TempEnable();
         }
         isHoldingItem = false;
         heldItem = null;

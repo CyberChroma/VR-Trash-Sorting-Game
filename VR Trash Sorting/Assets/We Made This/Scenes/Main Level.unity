@@ -2252,7 +2252,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   openingCentre: {x: 0, y: 0, z: 0}
-  radius: 0.7
+  radius: 0.4
 --- !u!114 &436782089
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2265,7 +2265,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b5f22150570c83c4196a1cad9840b908, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ButtonCooldown: 1
+  ButtonCooldown: 0.3
   pressedColor: {r: 0.8, g: 0.21395504, b: 0.20784311, a: 1}
   OnHit:
     m_PersistentCalls:
@@ -10532,7 +10532,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   openingCentre: {x: 0, y: 0.7, z: 0}
-  radius: 0
+  radius: 0.9
 --- !u!114 &1580609233
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -18037,7 +18037,7 @@ Rigidbody:
   m_GameObject: {fileID: 716980211986650151}
   serializedVersion: 2
   m_Mass: 1
-  m_Drag: 1
+  m_Drag: 0
   m_AngularDrag: 0.05
   m_UseGravity: 1
   m_IsKinematic: 0
@@ -20066,7 +20066,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 99b6aa2d9b93b8a4e849d73c46689c8a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxCorrectiveDistance: 0.7
+  maxCorrectiveDistance: 0.4
   fixedTicksBeforeCorrection: 1
   maxEndpointIterations: 8
 --- !u!33 &2811841740167214255
