@@ -14,6 +14,7 @@ public class FirstPersonController : MonoBehaviour
     public Vector3 snappedItemPosition = new Vector3(0.1f, 0.0f, 0.4f);
     public GameObject uiReticle;
     public GameObject itemSpawner;
+    public bool aimAssistOn = false;
 
     private float xRotation;
     private float yRotation;
@@ -98,12 +99,22 @@ public class FirstPersonController : MonoBehaviour
         heldItem.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.None;
         heldItem.GetComponent<Rigidbody>().AddForce(transform.forward * throwForce, ForceMode.Impulse);
         // Enabling the autoaim on the component
-        AimAssist aa = heldItem.GetComponent<AimAssist>();
-        //ParabolaPreview pp = heldItem.GetComponent<ParabolaPreview>();
-        if (aa != null /*&& pp != null*/)
+        if (aimAssistOn)
         {
-            aa.EnableOnce();
-            //pp.TempEnable();
+            AimAssist aa = heldItem.GetComponent<AimAssist>();
+            if (aa != null)
+            {
+                aa.EnableOnce();
+            }
+        }
+        else
+        {
+            ParabolaPreview pp = heldItem.GetComponent<ParabolaPreview>();
+            if(pp != null)
+            {
+                pp.TempEnable();
+            }
+
         }
         isHoldingItem = false;
         heldItem = null;
