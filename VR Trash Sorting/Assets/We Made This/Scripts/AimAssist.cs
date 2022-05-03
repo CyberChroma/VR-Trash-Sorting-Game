@@ -71,6 +71,19 @@ public class AimAssist : MonoBehaviour
             {
                 dest = BinOpeningPoint.FindClosestOpening(newEndpoint);
                 binPoint = dest;
+
+                //Range check V2.1
+                Vector3 tempCorr = newEndpoint;
+                tempCorr.y = dest.y;
+                float calcDist = Vector3.Distance(tempCorr, dest);
+                
+                if (calcDist > maxCorrectiveDistance)
+                {
+                    Debug.Log("Calculated distance = " + calcDist + ", while max accepted distance is = " + maxCorrectiveDistance);
+                    pp.TempEnable();
+                    assist = -1;
+                    return;
+                }
             }
             else
             {
@@ -93,17 +106,17 @@ public class AimAssist : MonoBehaviour
                 Debug.Log("Calculated distance = " + tempCorr.magnitude + ", while max accepted distance is = " + maxCorrectiveDistance);
                 if(tempCorr.magnitude <= maxCorrectiveDistance)*/
 
-                //Range check V2
+                /*Range check V2
                 Vector3 tempCorr = endPoints[0];
                 tempCorr.y = dest.y;
                 float calcDist = Vector3.Distance(tempCorr, dest);
                 Debug.Log("Calculated distance = " + calcDist + ", while max accepted distance is = " + maxCorrectiveDistance);
                 if (calcDist <= maxCorrectiveDistance)
-                {
-                    // Finally, apply force
-                    Debug.Log("Final correction vector: (x: " + savedCorrection.x + ", y: " + savedCorrection.y + ", z: " + savedCorrection.z + ")\nNeeded iterations: " + assist);
-                    rb.AddForce(savedCorrection, ForceMode.VelocityChange);
-                }
+                {*/
+                // Finally, apply force
+                Debug.Log("Final correction vector: (x: " + savedCorrection.x + ", y: " + savedCorrection.y + ", z: " + savedCorrection.z + ")\nNeeded iterations: " + assist);
+                rb.AddForce(savedCorrection, ForceMode.VelocityChange);
+                //}
                 // Whether the assist was successful or not, we disable the assist
                 assist = -2;
 

@@ -505,7 +505,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxCorrectiveDistance: 0.9
   fixedTicksBeforeCorrection: 1
-  maxEndpointIterations: 8
+  maxEndpointIterations: 4
 --- !u!114 &-4710579330780052161
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -518,5 +518,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 00e76e7332ad86140b53259bd5727655, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ShrinkScale: 0.9
-  MinSize: 0.18
+  ShrinkTime: 2

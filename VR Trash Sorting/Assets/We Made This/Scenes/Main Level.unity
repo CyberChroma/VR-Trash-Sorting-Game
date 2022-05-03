@@ -3898,7 +3898,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &539002971
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10792,7 +10792,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1545297269
 Transform:
   m_ObjectHideFlags: 0
@@ -18685,7 +18685,7 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  m_ThrowVelocityScale: 1.5
+  m_ThrowVelocityScale: 2.5
   m_ThrowAngularVelocityScale: 0.25
   m_ForceGravityOnDetach: 0
   m_RetainTransformParent: 1
@@ -20584,7 +20584,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxCorrectiveDistance: 0.4
   fixedTicksBeforeCorrection: 1
-  maxEndpointIterations: 8
+  maxEndpointIterations: 4
 --- !u!33 &2811841740167214255
 MeshFilter:
   m_ObjectHideFlags: 0
