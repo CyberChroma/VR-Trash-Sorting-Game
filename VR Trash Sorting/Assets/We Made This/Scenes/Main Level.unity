@@ -39,7 +39,7 @@ RenderSettings:
   m_ReflectionIntensity: 0.25
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 1730878534}
-  m_IndirectSpecularColor: {r: 0.1909019, g: 0.355766, b: 2.132341, a: 0.25}
+  m_IndirectSpecularColor: {r: 0.1909009, g: 0.3557449, b: 2.132215, a: 0.25}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -3898,7 +3898,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &539002971
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4015,13 +4015,14 @@ MonoBehaviour:
   maxCameraAngle: 90
   pickupRadius: 2
   throwForce: 8
-  snapTime: 1
+  snapTime: 0.2
   uiReticle: {fileID: 1900339385}
   itemSpawner: {fileID: 1990033538}
   snappedItemPosition: {x: 0.1, y: 0, z: 0.4}
   snappedItemSinkPosition: {x: 0.1, y: 0, z: 0.5}
   snappedItemRotation: {x: 0.00000003090862, y: 0.70710677, z: 0.70710677, w: -0.00000003090862}
   snappedItemSinkRotation: {x: -0.1227878, y: 0.6963643, z: 0.6963643, w: -0.1227878}
+  snappedItemPouringRotation: {x: 0.68301266, y: -0.18301268, z: -0.18301268, w: 0.68301266}
   isOverSink: 0
 --- !u!1 &542081119
 GameObject:
@@ -10791,7 +10792,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1545297269
 Transform:
   m_ObjectHideFlags: 0
@@ -11154,7 +11155,7 @@ PrefabInstance:
     - target: {fileID: 2486969586087902649, guid: c86378c7e947c0e4d86c93e7e75306d3,
         type: 3}
       propertyPath: m_IsTrigger
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5964069398353941560, guid: c86378c7e947c0e4d86c93e7e75306d3,
         type: 3}

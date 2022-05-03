@@ -6,6 +6,7 @@ public class HydraulicPressButton : MonoBehaviour
 {
     private bool pressing;
     private HydraulicPress hydraulicPress;
+    private float pressTime = 0.0f;
 
     // Start is called before the first frame update
     void Start()
@@ -24,17 +25,25 @@ public class HydraulicPressButton : MonoBehaviour
         }
     }
 
-    public void Press()
+    public void PressVR()
     {
         pressing = true;
         hydraulicPress.StartSquish();
+    }
+
+    public void PressFPS()
+    {
+        pressing = true;
+        hydraulicPress.StartSquish();
+        pressTime = 0.2f;
+        StartCoroutine(unpressCoroutine());
     }
 
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.layer == 9) {
             if (!pressing) {
-                Press();
+                PressVR();
             }
         }
     }
@@ -44,5 +53,15 @@ public class HydraulicPressButton : MonoBehaviour
         if (other.gameObject.layer == 9) {
             pressing = false;
         }
+    }
+
+    IEnumerator unpressCoroutine()
+    {
+        while (pressTime > 0)
+        {
+            pressTime -= Time.deltaTime;
+            yield return new WaitForEndOfFrame();
+        }
+        pressing = false;
     }
 }

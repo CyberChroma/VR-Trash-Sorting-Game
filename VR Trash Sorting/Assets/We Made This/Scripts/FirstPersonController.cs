@@ -18,6 +18,7 @@ public class FirstPersonController : MonoBehaviour
     public Vector3 snappedItemSinkPosition = new Vector3(0.1f, 0.0f, 0.5f);
     public Quaternion snappedItemRotation = Quaternion.Euler(-90, 180, 0);
     public Quaternion snappedItemSinkRotation = Quaternion.Euler(290, 270, 270);
+    public Quaternion snappedItemPouringRotation = Quaternion.Euler(340, 270, 270);
     public bool isOverSink = false;
 
     private float xRotation;
@@ -56,17 +57,36 @@ public class FirstPersonController : MonoBehaviour
                         PickupItem(hit);
                     }
                 }
+                else if (hit.collider.gameObject.CompareTag("Button"))
+                {
+                    uiReticle.GetComponent<Image>().color = new Color32(255, 0, 255, 150);
+                    if (Input.GetMouseButtonDown(0))
+                    {
+                        hit.collider.gameObject.GetComponent<HydraulicPressButton>().PressFPS();
+                    }
+                }
             }
         }
         else
         {
-            if (Input.GetMouseButtonDown(0))
+            if (isOverSink)
             {
-                ThrowHeldItem();
+                if (Input.GetMouseButtonDown(0))
+                {
+                    StartCoroutine(SnapHeldItemToPositionCoroutine(snappedItemSinkPosition, snappedItemPouringRotation));
+                    StartCoroutine(PourLiquidCoroutine());
+                }
             }
-            else if (Input.GetMouseButtonDown(1))
+            else
             {
-                DropHeldItem();
+                if (Input.GetMouseButtonDown(0))
+                {
+                    ThrowHeldItem();
+                }
+                else if (Input.GetMouseButtonDown(1))
+                {
+                    DropHeldItem();
+                }
             }
         }
 
@@ -147,5 +167,14 @@ public class FirstPersonController : MonoBehaviour
         }
         heldItem.transform.localPosition = position;
         heldItem.transform.localRotation = rotation;
+    }
+
+    public IEnumerator PourLiquidCoroutine()
+    {
+        while (Input.GetMouseButton(0))
+        {
+            yield return new WaitForEndOfFrame();
+        }
+        StartCoroutine(SnapHeldItemToPositionCoroutine(snappedItemSinkPosition, snappedItemSinkRotation));
     }
 }
