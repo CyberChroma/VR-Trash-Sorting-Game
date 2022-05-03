@@ -23,17 +23,18 @@ public class ScoreUI : MonoBehaviour
         comboText.text = "Combo:\n0";
     }
 
-    public void AddScore()
+    public void AddScore(float bonus)
     {
         int comboMultiplier = Mathf.Min(combo / comboInterval, maxComboMultiplier);
-        score += scoreAddCorrect + scoreComboBonus * comboMultiplier;
+        score += scoreAddCorrect + scoreComboBonus * comboMultiplier + bonus * (comboMultiplier + 1);
         combo += 1;
         UpdateText();
     }
 
-    public void DeductScore()
+    public void DeductScore(float bonus)
     {
         score -= scoreDeductIncorrect;
+        score += bonus;
         combo = 0;
         UpdateText();
     }

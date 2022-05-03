@@ -36,6 +36,7 @@ public class HydraulicPress : MonoBehaviour
         foreach(Transform obj in objectsToSquish) {
             obj.position = new Vector3(obj.position.x, transform.position.y, transform.position.z);
             obj.localScale = new Vector3(obj.localScale.x * 0.25f, obj.localScale.y, obj.localScale.z);
+            obj.GetComponent<TrashItem>().isFlattened = true;
             audioS.clip = squishNoises[Random.Range(0, squishNoises.Length)];
             audioS.Play();
         }

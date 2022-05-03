@@ -13,6 +13,8 @@ public enum TrashType
 public class TrashItem : MonoBehaviour
 {
     public TrashType trashType;
+    public bool needsPrep = false;
+    public bool isFlattened = false;
 
     // Start is called before the first frame update
     void Start()

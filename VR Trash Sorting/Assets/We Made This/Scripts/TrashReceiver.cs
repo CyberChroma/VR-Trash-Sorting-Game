@@ -21,15 +21,22 @@ public class TrashReceiver : MonoBehaviour
     void OnTriggerEnter(Collider other)
     {
         TrashItem trashItem = other.GetComponent<TrashItem>();
+        LiquidPour liquidPouring = trashItem.GetComponent<LiquidPour>();
+        float bonusPoints = 0;
+        if ((trashItem.needsPrep && trashItem.isFlattened) || (liquidPouring != null && liquidPouring.liquidCapacity <= 0))
+        {
+            bonusPoints += 5;
+        }
+
         if (trashItem) {
             if (trashItem.trashType == trashType) {
                 print("Correct Sorting!");
-                scoreUI.AddScore();
+                scoreUI.AddScore(bonusPoints);
                 Destroy(other.gameObject);
             }
             else {
                 print("Incorrect Sorting!");
-                scoreUI.DeductScore();
+                scoreUI.DeductScore(bonusPoints);
                 Destroy(other.gameObject);
             }
         }
