@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class ConveyorObjectSpawner : MonoBehaviour
 {
-    public GameObject objToSpawn;
+    private int rand;
+    public GameObject[] objToSpawn;
     public float spawnTime;
 
     // Start is called before the first frame update
@@ -19,7 +20,9 @@ public class ConveyorObjectSpawner : MonoBehaviour
     {
         while (true) {
             yield return new WaitForSeconds(spawnTime);
-            Instantiate(objToSpawn, transform);
+
+            rand = Random.Range(0, objToSpawn.Length);
+            Instantiate(objToSpawn[rand], transform);
         }
     }
 }

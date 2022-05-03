@@ -39,7 +39,7 @@ RenderSettings:
   m_ReflectionIntensity: 0.25
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 1730878534}
-  m_IndirectSpecularColor: {r: 0.1909009, g: 0.3557449, b: 2.132215, a: 0.25}
+  m_IndirectSpecularColor: {r: 0, g: 0.24999976, b: 0.24999976, a: 0.25}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -4070,7 +4070,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &539002971
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9564,8 +9564,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9134fae12b531a947a09e1354d1c4ad3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  objToSpawn: {fileID: 1374728610596208290, guid: 3b677c84ddcbb204aa0f9fb4b9ce3e9e,
-    type: 3}
+  objToSpawn:
+  - {fileID: 1374728610596208290, guid: 3b677c84ddcbb204aa0f9fb4b9ce3e9e, type: 3}
   spawnTime: 5
 --- !u!4 &1429325879
 Transform:
@@ -11144,7 +11144,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1545297269
 Transform:
   m_ObjectHideFlags: 0
@@ -14147,8 +14147,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9134fae12b531a947a09e1354d1c4ad3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  objToSpawn: {fileID: 5876809349148110938, guid: 5ca5cc522b5e82d418fea93d4fea5c16,
-    type: 3}
+  objToSpawn:
+  - {fileID: 7524799867305923232, guid: 2326fb28eb0f6c74cbf0e6474325f585, type: 3}
+  - {fileID: 1994037756346400088, guid: 8240f0ee9664e8543ae31c63a904123c, type: 3}
+  - {fileID: 4809612083749866699, guid: b8c3e1dcc14b53d4394fec25288bb338, type: 3}
+  - {fileID: 5687995181875205961, guid: f82cd71bbbd0c0b42bb85e078e33f14a, type: 3}
   spawnTime: 4
 --- !u!4 &1990033540
 Transform:
