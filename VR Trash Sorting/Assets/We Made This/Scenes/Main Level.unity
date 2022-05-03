@@ -6438,7 +6438,7 @@ Transform:
   m_Children:
   - {fileID: 2049132716}
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 27.458, y: 0, z: 0}
 --- !u!114 &539002975
 MonoBehaviour:
@@ -13368,7 +13368,7 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: ebf1ca1c8fe40764c9ceed15991c0b26,
         type: 3}
       propertyPath: m_RootOrder
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: ebf1ca1c8fe40764c9ceed15991c0b26,
         type: 3}
@@ -16618,8 +16618,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f4d28f12842d971429e16a1b42740901, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startMinutes: 3
-  startSeconds: 15
+  startMinutes: 1
+  startSeconds: 30
   timerText: {fileID: 576460483}
   endGameBoard: {fileID: 2025491148}
   spawner: {fileID: 1990033538}
@@ -22326,10 +22326,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objToSpawn:
-  - {fileID: 7524799867305923232, guid: 2326fb28eb0f6c74cbf0e6474325f585, type: 3}
-  - {fileID: 1994037756346400088, guid: 8240f0ee9664e8543ae31c63a904123c, type: 3}
-  - {fileID: 4809612083749866699, guid: b8c3e1dcc14b53d4394fec25288bb338, type: 3}
+  - {fileID: 1735144498366894959, guid: f0eb607a0ade9b0419ae0cd9f77eee2b, type: 3}
+  - {fileID: 7655867509221982385, guid: f01c34b724c03424eac20d73b3a8c770, type: 3}
+  - {fileID: 3151722055769945780, guid: 5badf705ac119494dac7011e9605b115, type: 3}
   - {fileID: 5687995181875205961, guid: f82cd71bbbd0c0b42bb85e078e33f14a, type: 3}
+  - {fileID: 8908550709925421369, guid: ac693f7a03cb8814c9efbeeb8e87737e, type: 3}
+  - {fileID: 8309681059394207940, guid: a1e0f9184c9f883438d73f9bf22682cb, type: 3}
   spawnTime: 4
 --- !u!4 &1990033540
 Transform:
