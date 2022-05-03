@@ -5,16 +5,20 @@ using UnityEngine.UI;
 
 public class FirstPersonController : MonoBehaviour
 {
+    public bool aimAssistOn = false;
     public float moveSpeed = 5.0f;
     public float cameraSensitivity = 3.0f;
     public float maxCameraAngle = 90.0f;
     public float pickupRadius = 2.0f;
     public float throwForce = 10.0f;
     public float snapTime = 0.2f;
-    public Vector3 snappedItemPosition = new Vector3(0.1f, 0.0f, 0.4f);
     public GameObject uiReticle;
     public GameObject itemSpawner;
-    public bool aimAssistOn = false;
+    public Vector3 snappedItemPosition = new Vector3(0.1f, 0.0f, 0.4f);
+    public Vector3 snappedItemSinkPosition = new Vector3(0.1f, 0.0f, 0.5f);
+    public Quaternion snappedItemRotation = Quaternion.Euler(-90, 180, 0);
+    public Quaternion snappedItemSinkRotation = Quaternion.Euler(290, 270, 270);
+    public bool isOverSink = false;
 
     private float xRotation;
     private float yRotation;
@@ -41,7 +45,7 @@ public class FirstPersonController : MonoBehaviour
         if (!isHoldingItem)
         {
             RaycastHit hit;
-            if (Physics.Raycast(transform.position, transform.forward, out hit, pickupRadius))
+            if (Physics.Raycast(transform.position, transform.forward, out hit, pickupRadius, ~0, QueryTriggerInteraction.Ignore))
             {
                 Debug.DrawRay(transform.position, transform.forward * hit.distance, Color.yellow);
                 if (hit.collider.gameObject.CompareTag("Trash"))
@@ -89,7 +93,7 @@ public class FirstPersonController : MonoBehaviour
         {
             pp.DisableLine();
         }
-        StartCoroutine(SnapHeldItemToPositionCoroutine());
+        StartCoroutine(SnapHeldItemToPositionCoroutine(snappedItemPosition, snappedItemRotation));
     }
 
     void ThrowHeldItem()
@@ -129,16 +133,19 @@ public class FirstPersonController : MonoBehaviour
         heldItem = null;
     }
 
-    IEnumerator SnapHeldItemToPositionCoroutine()
+    public IEnumerator SnapHeldItemToPositionCoroutine(Vector3 position, Quaternion rotation)
     {
         float elapsedTime = 0.0f;
         Vector3 startPos = heldItem.transform.localPosition;
+        Quaternion startRotation = heldItem.transform.localRotation;
         while (elapsedTime < snapTime)
         {
-            heldItem.transform.localPosition = Vector3.Lerp(startPos, snappedItemPosition, (elapsedTime / snapTime));
+            heldItem.transform.localPosition = Vector3.Lerp(startPos, position, (elapsedTime / snapTime));
+            heldItem.transform.localRotation = Quaternion.Slerp(startRotation, rotation, (elapsedTime / snapTime));
             elapsedTime += Time.deltaTime;
             yield return new WaitForEndOfFrame();
         }
-        heldItem.transform.localPosition = snappedItemPosition;
+        heldItem.transform.localPosition = position;
+        heldItem.transform.localRotation = rotation;
     }
 }

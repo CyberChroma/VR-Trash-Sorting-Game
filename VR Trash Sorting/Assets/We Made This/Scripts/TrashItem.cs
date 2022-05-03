@@ -25,4 +25,30 @@ public class TrashItem : MonoBehaviour
     {
         
     }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (transform.parent.name == "First Person Controller")
+        {
+            if (other.gameObject.CompareTag("Disposal"))
+            {
+                FirstPersonController fpsController = transform.parent.GetComponent<FirstPersonController>();
+                fpsController.isOverSink = true;
+                StartCoroutine(fpsController.SnapHeldItemToPositionCoroutine(fpsController.snappedItemSinkPosition, fpsController.snappedItemSinkRotation));
+            }
+        }
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        if (transform.parent.name == "First Person Controller")
+        {
+            if (other.gameObject.CompareTag("Disposal"))
+            {
+                FirstPersonController fpsController = transform.parent.GetComponent<FirstPersonController>();
+                fpsController.isOverSink = false;
+                StartCoroutine(fpsController.SnapHeldItemToPositionCoroutine(fpsController.snappedItemPosition, fpsController.snappedItemRotation));
+            }
+        }
+    }
 }

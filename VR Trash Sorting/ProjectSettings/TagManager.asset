@@ -7,6 +7,7 @@ TagManager:
   - Ignite
   - Shrink
   - Trash
+  - Disposal
   layers:
   - Default
   - TransparentFX
