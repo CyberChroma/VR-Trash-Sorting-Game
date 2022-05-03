@@ -4066,7 +4066,7 @@ GameObject:
   - component: {fileID: 539002975}
   m_Layer: 0
   m_Name: First Person Controller
-  m_TagString: Untagged
+  m_TagString: MainCamera
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4188,6 +4188,8 @@ MonoBehaviour:
   pickupRadius: 2
   throwForce: 8
   snapTime: 0.2
+  defaultFOV: 60
+  zoomFOV: 15
   uiReticle: {fileID: 1900339385}
   itemSpawner: {fileID: 1990033538}
   snappedItemPosition: {x: 0.1, y: 0, z: 0.4}

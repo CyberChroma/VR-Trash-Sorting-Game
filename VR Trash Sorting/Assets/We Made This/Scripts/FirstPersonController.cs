@@ -12,6 +12,8 @@ public class FirstPersonController : MonoBehaviour
     public float pickupRadius = 2.0f;
     public float throwForce = 10.0f;
     public float snapTime = 0.2f;
+    public float defaultFOV = 60;
+    public float zoomFOV = 15;
     public GameObject uiReticle;
     public GameObject itemSpawner;
     public Vector3 snappedItemPosition = new Vector3(0.1f, 0.0f, 0.4f);
@@ -90,6 +92,15 @@ public class FirstPersonController : MonoBehaviour
             }
         }
 
+        if (Input.GetKeyDown(KeyCode.Z))
+        {
+            StartCoroutine(SetCameraFOVCoroutine(zoomFOV));
+        }
+        if (Input.GetKeyUp(KeyCode.Z))
+        {
+            StartCoroutine(SetCameraFOVCoroutine(defaultFOV));
+        }
+
         // Getting camera inputs and applying them
         xRotation += Input.GetAxis("Mouse X") * cameraSensitivity;
         yRotation -= Input.GetAxis("Mouse Y") * cameraSensitivity;
@@ -97,7 +108,6 @@ public class FirstPersonController : MonoBehaviour
         yRotation = Mathf.Clamp(yRotation, -maxCameraAngle, maxCameraAngle);
 
         transform.rotation = Quaternion.Euler(yRotation, xRotation, 0);
-        
     }
 
     void PickupItem(RaycastHit hit)
@@ -176,5 +186,17 @@ public class FirstPersonController : MonoBehaviour
             yield return new WaitForEndOfFrame();
         }
         StartCoroutine(SnapHeldItemToPositionCoroutine(snappedItemSinkPosition, snappedItemSinkRotation));
+    }
+
+    IEnumerator SetCameraFOVCoroutine(float fov)
+    {
+        float elapsedTime = 0.0f;
+        float startingFOV = Camera.main.fieldOfView;
+        while (elapsedTime < snapTime)
+        {
+            Camera.main.fieldOfView = Mathf.Lerp(startingFOV, fov, (elapsedTime / snapTime));
+            elapsedTime += Time.deltaTime;
+            yield return new WaitForEndOfFrame();
+        }
     }
 }
