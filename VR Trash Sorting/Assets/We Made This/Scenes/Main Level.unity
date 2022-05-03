@@ -5913,7 +5913,6 @@ MonoBehaviour:
   defaultFOV: 60
   zoomFOV: 15
   uiReticle: {fileID: 1900339385}
-  itemSpawner: {fileID: 1990033538}
   snappedItemPosition: {x: 0.1, y: 0, z: 0.4}
   snappedItemSinkPosition: {x: 0.1, y: 0, z: 0.5}
   snappedItemRotation: {x: 0.00000003090862, y: 0.70710677, z: 0.70710677, w: -0.00000003090862}
@@ -14205,6 +14204,11 @@ MonoBehaviour:
   startMinutes: 3
   startSeconds: 10
   timerText: {fileID: 576460483}
+  endGameBoard: {fileID: 0}
+  spawner: {fileID: 0}
+  menuThrow: {fileID: 0}
+  menuMusic: {fileID: 0}
+  gameMusic: {fileID: 0}
 --- !u!1 &1475994608 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: -1942105242948637544, guid: c75c399c8c14c424191ff1c68b44a973,
