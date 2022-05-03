@@ -8,6 +8,7 @@ TagManager:
   - Shrink
   - Trash
   - Disposal
+  - Button
   layers:
   - Default
   - TransparentFX

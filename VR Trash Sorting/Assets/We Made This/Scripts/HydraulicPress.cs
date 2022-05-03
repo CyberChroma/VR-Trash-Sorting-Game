@@ -4,8 +4,6 @@ using UnityEngine;
 
 public class HydraulicPress : MonoBehaviour
 {
-    public bool tempButtonPressed;
-
     private Animator anim;
     private List<Transform> objectsToSquish = new List<Transform>();
 
@@ -13,15 +11,6 @@ public class HydraulicPress : MonoBehaviour
     void Start()
     {
         anim = GetComponentInParent<Animator>();
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        if (tempButtonPressed) {
-            StartCoroutine(Squish());
-            tempButtonPressed = false;
-        }
     }
     
     public void StartSquish()
@@ -35,20 +24,20 @@ public class HydraulicPress : MonoBehaviour
         yield return new WaitForSeconds(0.2f);
         foreach(Transform obj in objectsToSquish) {
             obj.position = new Vector3(obj.position.x, transform.position.y, transform.position.z);
-            obj.localScale = new Vector3(0.25f, 1, 1);
+            obj.localScale = new Vector3(obj.localScale.x * 0.25f, obj.localScale.y, obj.localScale.z);
         }
     }
 
     private void OnTriggerEnter(Collider other)
     {
-        if (!objectsToSquish.Contains(other.transform) && other.GetComponent<Rigidbody>() && !other.name.Contains("Press")) {
+        if (!objectsToSquish.Contains(other.transform) && other.GetComponent<Rigidbody>() && !other.name.Contains("Button") && !other.name.Contains("Menu")) {
             objectsToSquish.Add(other.transform);
         }
     }
 
     private void OnTriggerExit(Collider other)
     {
-        if (objectsToSquish.Contains(other.transform) && other.GetComponent<Rigidbody>() && !other.name.Contains("Press")) {
+        if (objectsToSquish.Contains(other.transform) && other.GetComponent<Rigidbody>() && !other.name.Contains("Button") && !other.name.Contains("Menu")) {
             objectsToSquish.Remove(other.transform);
         }
     }
