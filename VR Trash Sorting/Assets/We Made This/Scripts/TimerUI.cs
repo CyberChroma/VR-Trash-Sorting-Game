@@ -33,6 +33,8 @@ public class TimerUI : MonoBehaviour
     {
         minutesLeft = startMinutes;
         secondsLeft = startSeconds;
+        timerText.text = string.Format("Time:\n{0:00}:{1:00}", minutesLeft, secondsLeft);
+        StartCoroutine(CountDown());
     }
 
     IEnumerator CountDown()

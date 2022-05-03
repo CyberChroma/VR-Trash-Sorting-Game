@@ -28,7 +28,7 @@ public class TrashItem : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (transform.parent.name == "First Person Controller")
+        if (transform.parent != null && transform.parent.name == "First Person Controller")
         {
             if (other.gameObject.CompareTag("Disposal"))
             {
@@ -41,7 +41,7 @@ public class TrashItem : MonoBehaviour
 
     private void OnTriggerExit(Collider other)
     {
-        if (transform.parent.name == "First Person Controller")
+        if (transform.parent != null && transform.parent.name == "First Person Controller")
         {
             if (other.gameObject.CompareTag("Disposal"))
             {
