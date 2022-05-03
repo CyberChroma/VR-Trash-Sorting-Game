@@ -63,4 +63,11 @@ public class ScoreUI : MonoBehaviour
             comboText.color = Color.red;
         }
     }
+
+    public void ResetScore()
+    {
+        score = 0;
+        combo = 0;
+        UpdateText();
+    }
 }
