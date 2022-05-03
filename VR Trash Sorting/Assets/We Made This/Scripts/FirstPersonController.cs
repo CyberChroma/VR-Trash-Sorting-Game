@@ -6,6 +6,11 @@ using UnityEngine.UI;
 public class FirstPersonController : MonoBehaviour
 {
     public bool aimAssistOn = false;
+    public bool AimAssistOn
+    {
+        get { return aimAssistOn; }
+        set { aimAssistOn = value; }
+    }
     public float moveSpeed = 5.0f;
     public float cameraSensitivity = 3.0f;
     public float maxCameraAngle = 90.0f;
