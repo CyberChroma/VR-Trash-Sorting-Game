@@ -132,6 +132,7 @@ public class FirstPersonController : MonoBehaviour
 
     void ThrowHeldItem()
     {
+        heldItem.transform.parent = null;
         heldItem.GetComponent<Rigidbody>().useGravity = true;
         heldItem.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.None;
         heldItem.GetComponent<Rigidbody>().AddForce(transform.forward * throwForce, ForceMode.Impulse);
@@ -159,6 +160,7 @@ public class FirstPersonController : MonoBehaviour
 
     void DropHeldItem()
     {
+        heldItem.transform.parent = null;
         heldItem.GetComponent<Rigidbody>().useGravity = true;
         heldItem.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.None;
         isHoldingItem = false;
