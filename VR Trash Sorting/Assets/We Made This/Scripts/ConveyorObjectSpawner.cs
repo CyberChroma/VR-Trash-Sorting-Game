@@ -16,6 +16,15 @@ public class ConveyorObjectSpawner : MonoBehaviour
         }
     }
 
+    public void StartAgain()
+    {
+        StopAllCoroutines();
+        if(spawnTime > 0)
+        {
+            StartCoroutine(SpawnObject());
+        }
+    }
+
     IEnumerator SpawnObject()
     {
         while (true) {
