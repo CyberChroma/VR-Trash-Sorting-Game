@@ -20,7 +20,6 @@ public class FirstPersonController : MonoBehaviour
     public float defaultFOV = 60;
     public float zoomFOV = 15;
     public GameObject uiReticle;
-    public GameObject itemSpawner;
     public Vector3 snappedItemPosition = new Vector3(0.1f, 0.0f, 0.4f);
     public Vector3 snappedItemSinkPosition = new Vector3(0.1f, 0.0f, 0.5f);
     public Quaternion snappedItemRotation = Quaternion.Euler(-90, 180, 0);
@@ -133,7 +132,6 @@ public class FirstPersonController : MonoBehaviour
 
     void ThrowHeldItem()
     {
-        heldItem.transform.parent = itemSpawner.transform;
         heldItem.GetComponent<Rigidbody>().useGravity = true;
         heldItem.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.None;
         heldItem.GetComponent<Rigidbody>().AddForce(transform.forward * throwForce, ForceMode.Impulse);
@@ -161,7 +159,6 @@ public class FirstPersonController : MonoBehaviour
 
     void DropHeldItem()
     {
-        heldItem.transform.parent = itemSpawner.transform;
         heldItem.GetComponent<Rigidbody>().useGravity = true;
         heldItem.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.None;
         isHoldingItem = false;
