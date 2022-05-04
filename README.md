@@ -42,3 +42,4 @@ Throughout the development process, we had to reprioritize and scrap / modify so
 - Voice lines for Razz giving additional feedback as well as extra information regarding waste sorting for educational purposes.
 - Dynamically scaling difficulty with faster item spawns and more complexity added over time.
 - Additional sounds and visual effects providing even more feedback to players.
+- Providing final rundown of performance to players showing mistakes and their fixes -- hooked up to analytics system to track sorting data.
