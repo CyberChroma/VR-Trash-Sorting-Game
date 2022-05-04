@@ -37,11 +37,16 @@ public class HydraulicPress : MonoBehaviour
             obj.position = new Vector3(obj.position.x, transform.position.y, transform.position.z);
             obj.localScale = new Vector3(obj.localScale.x * 0.25f, obj.localScale.y, obj.localScale.z);
             obj.GetComponent<TrashItem>().isFlattened = true;
+            LiquidPour lp = obj.GetComponent<LiquidPour>();
+            if(lp != null && lp.liquidCapacity > 0)
+            {
+                lp.Squish();
+            }
             audioS.clip = squishNoises[Random.Range(0, squishNoises.Length)];
             audioS.Play();
         }
-        audioS.clip = retract;
-        audioS.PlayDelayed(0.1f);
+        //audioS.clip = retract;
+        //audioS.PlayDelayed(0.1f);
     }
 
     private void OnTriggerEnter(Collider other)

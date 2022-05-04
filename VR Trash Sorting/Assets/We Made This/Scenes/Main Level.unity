@@ -39,7 +39,7 @@ RenderSettings:
   m_ReflectionIntensity: 0.25
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 1730878534}
-  m_IndirectSpecularColor: {r: 0, g: 0.24999976, b: 0.24999976, a: 0.25}
+  m_IndirectSpecularColor: {r: 0.1909009, g: 0.3557449, b: 2.132215, a: 0.25}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1496,8 +1496,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.40206295, y: 0.5059889, z: 0.33835772}
-  m_Center: {x: -0.6970501, y: -0.13262913, z: 1.075203}
+  m_Size: {x: 0.40206295, y: 0.5059889, z: 0.50019264}
+  m_Center: {x: -0.6970501, y: -0.13262913, z: 1.1561205}
 --- !u!1 &180683230
 GameObject:
   m_ObjectHideFlags: 0
@@ -2285,6 +2285,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   trashType: 0
+  needsPrep: 0
+  isFlattened: 0
 --- !u!114 &210332183
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6433,7 +6435,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 539002970}
   m_LocalRotation: {x: 0.23732783, y: -0, z: -0, w: 0.97142965}
-  m_LocalPosition: {x: 0, y: 1.6, z: 0}
+  m_LocalPosition: {x: 0, y: 1.512, z: 0.061}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 2049132716}
@@ -6497,7 +6499,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 3180079db3c66db4bbd199820674a70b, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 0.26
+  m_Volume: 0.16
   m_Pitch: 1
   Loop: 1
   Mute: 0
@@ -12193,8 +12195,6 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 2c4698513797925479937fa4e352c6d8, type: 3}
   - {fileID: 8300000, guid: 7b7b9427f986ad747877fa92f1363f01, type: 3}
   - {fileID: 8300000, guid: 98e6d60a95956a54c9c118e6f8dbbb60, type: 3}
-  - {fileID: 8300000, guid: 334c5a4bc28858c4180dfc458b42ec09, type: 3}
-  - {fileID: 8300000, guid: eacdc952a1cf66c4d80f4d01f396f2f6, type: 3}
 --- !u!82 &1022148992
 AudioSource:
   m_ObjectHideFlags: 0
@@ -13397,7 +13397,7 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: ebf1ca1c8fe40764c9ceed15991c0b26,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.7678
+      value: -0.6378
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: ebf1ca1c8fe40764c9ceed15991c0b26,
         type: 3}
@@ -14752,7 +14752,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: e146fdaf2138566479482ddab4d6314d, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 0.3
+  m_Volume: 0.2
   m_Pitch: 1
   Loop: 1
   Mute: 0
@@ -16650,6 +16650,93 @@ MonoBehaviour:
   menuThrow: {fileID: 210332177}
   menuMusic: {fileID: 1221785186}
   gameMusic: {fileID: 542081120}
+  extraEvents:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1810849010}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
+      - m_Target: {fileID: 566831253}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
+      - m_Target: {fileID: 777327169}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
+      - m_Target: {fileID: 1035456284}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
+      - m_Target: {fileID: 1580609234}
+        m_TargetAssemblyTypeName: UnityEngine.Behaviour, UnityEngine
+        m_MethodName: set_enabled
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1580609233}
+        m_TargetAssemblyTypeName: UnityEngine.Behaviour, UnityEngine
+        m_MethodName: set_enabled
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1580609232}
+        m_TargetAssemblyTypeName: UnityEngine.Behaviour, UnityEngine
+        m_MethodName: set_enabled
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &1475994608 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: -1942105242948637544, guid: c75c399c8c14c424191ff1c68b44a973,
@@ -18453,7 +18540,7 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: c86378c7e947c0e4d86c93e7e75306d3,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: 0.13
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: c86378c7e947c0e4d86c93e7e75306d3,
         type: 3}
@@ -19243,7 +19330,7 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: 5d1b95cfbcf5aae418b9dad06b76252b,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: -0.19
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 5d1b95cfbcf5aae418b9dad06b76252b,
         type: 3}
@@ -20397,7 +20484,7 @@ PrefabInstance:
     - target: {fileID: 437649520611149921, guid: dd063ca4ea324e34b93885213bd2d163,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.902
+      value: -0.772
       objectReference: {fileID: 0}
     - target: {fileID: 437649520611149921, guid: dd063ca4ea324e34b93885213bd2d163,
         type: 3}
@@ -21840,6 +21927,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   trashType: 2
+  needsPrep: 0
+  isFlattened: 0
 --- !u!1 &1916667739 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: -6162775633527759524, guid: c75c399c8c14c424191ff1c68b44a973,
@@ -22300,6 +22389,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   trashType: 0
+  needsPrep: 0
+  isFlattened: 0
 --- !u!1 &1988603165 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: -8476412432153118351, guid: c75c399c8c14c424191ff1c68b44a973,
@@ -24628,6 +24719,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   trashType: 0
+  needsPrep: 0
+  isFlattened: 0
 --- !u!1 &1027307791511323
 GameObject:
   m_ObjectHideFlags: 0
@@ -24866,6 +24959,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   trashType: 3
+  needsPrep: 0
+  isFlattened: 0
 --- !u!1 &1130129721067271
 GameObject:
   m_ObjectHideFlags: 0
@@ -25104,6 +25199,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   trashType: 0
+  needsPrep: 0
+  isFlattened: 0
 --- !u!1 &1199256503813331
 GameObject:
   m_ObjectHideFlags: 0
@@ -25342,6 +25439,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   trashType: 0
+  needsPrep: 0
+  isFlattened: 0
 --- !u!1 &1199257716856805
 GameObject:
   m_ObjectHideFlags: 0
@@ -25580,6 +25679,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   trashType: 0
+  needsPrep: 0
+  isFlattened: 0
 --- !u!1 &1267677918605369
 GameObject:
   m_ObjectHideFlags: 0
@@ -25818,6 +25919,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   trashType: 0
+  needsPrep: 0
+  isFlattened: 0
 --- !u!1 &1320891772547743
 GameObject:
   m_ObjectHideFlags: 0
@@ -26074,6 +26177,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   trashType: 0
+  needsPrep: 0
+  isFlattened: 0
 --- !u!1 &1600022985130015
 GameObject:
   m_ObjectHideFlags: 0
@@ -26312,6 +26417,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   trashType: 0
+  needsPrep: 0
+  isFlattened: 0
 --- !u!1 &1619325017253099
 GameObject:
   m_ObjectHideFlags: 0
@@ -26380,6 +26487,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   trashType: 2
+  needsPrep: 0
+  isFlattened: 0
 --- !u!114 &1619325017253103
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -26788,6 +26897,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   trashType: 0
+  needsPrep: 0
+  isFlattened: 0
 --- !u!1 &1780727658423321
 GameObject:
   m_ObjectHideFlags: 0
@@ -27026,6 +27137,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   trashType: 0
+  needsPrep: 0
+  isFlattened: 0
 --- !u!1 &1976017686942171
 GameObject:
   m_ObjectHideFlags: 0
@@ -27264,6 +27377,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   trashType: 0
+  needsPrep: 0
+  isFlattened: 0
 --- !u!4 &4017469163350807
 Transform:
   m_ObjectHideFlags: 0
@@ -28431,6 +28546,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   trashType: 0
+  needsPrep: 0
+  isFlattened: 0
 --- !u!4 &716980211986650150
 Transform:
   m_ObjectHideFlags: 0
@@ -29470,6 +29587,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   trashType: 0
+  needsPrep: 0
+  isFlattened: 0
 --- !u!114 &1463332167099378677
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -29501,6 +29620,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   trashType: 0
+  needsPrep: 0
+  isFlattened: 0
 --- !u!114 &1463332167099378679
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -29532,6 +29653,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   trashType: 0
+  needsPrep: 0
+  isFlattened: 0
 --- !u!114 &1463332167099378681
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -29563,6 +29686,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   trashType: 0
+  needsPrep: 0
+  isFlattened: 0
 --- !u!33 &1463332167100643297
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -30104,6 +30229,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   trashType: 0
+  needsPrep: 0
+  isFlattened: 0
 --- !u!33 &2033916471295818429
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -31080,6 +31207,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   trashType: 0
+  needsPrep: 0
+  isFlattened: 0
 --- !u!23 &8750018129617265331
 MeshRenderer:
   m_ObjectHideFlags: 0

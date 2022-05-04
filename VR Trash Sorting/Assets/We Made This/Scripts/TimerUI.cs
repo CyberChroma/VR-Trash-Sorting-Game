@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.Events;
 
 public class TimerUI : MonoBehaviour
 {
@@ -19,6 +20,8 @@ public class TimerUI : MonoBehaviour
 
     public AudioSource menuMusic;
     public AudioSource gameMusic;
+
+    public UnityEvent extraEvents;
 
     // Start is called before the first frame update
     void Start()
@@ -51,6 +54,7 @@ public class TimerUI : MonoBehaviour
                     menuThrow.SetActive(true);
                     gameMusic.Stop();
                     menuMusic.Play();
+                    extraEvents.Invoke();
                     break;
                 }
                 secondsLeft = 59;

@@ -28,6 +28,16 @@ public class DespawnableObject : MonoBehaviour
             yield return null;
         }
 
+        // Takes away ur score cause u bad lol
+        try
+        {
+            FindObjectOfType<ScoreUI>().DeductScore(0);
+        }
+        catch (System.NullReferenceException)
+        {
+            Debug.Log("Please include a ScoreUI script in the scene, dummy!!!!");
+        }
+        
         Destroy(gameObject);
         
     }
