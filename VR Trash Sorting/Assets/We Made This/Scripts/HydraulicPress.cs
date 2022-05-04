@@ -31,6 +31,9 @@ public class HydraulicPress : MonoBehaviour
         anim.SetTrigger("Squish");
         audioS.clip = extend;
         audioS.Play();
+        foreach (Transform obj in objectsToSquish) {
+            obj.position = new Vector3(transform.position.x, transform.position.y + 0.1f, obj.position.z);
+        }
         yield return new WaitForSeconds(0.2f);
         audioS.Stop();
         foreach(Transform obj in objectsToSquish) {
