@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class VRMenu : MonoBehaviour
 {
+    [SerializeField]
+    private BinOpeningPoint hihi;
     Animator animator;
 
     // Start is called before the first frame update
@@ -17,4 +19,8 @@ public class VRMenu : MonoBehaviour
         gameObject.SetActive(false);
     }
 
+    public void LoveSelf()
+    {
+        hihi.enabled = true;
+    }
 }

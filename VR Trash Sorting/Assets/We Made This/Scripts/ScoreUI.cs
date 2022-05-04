@@ -12,6 +12,7 @@ public class ScoreUI : MonoBehaviour
     public int maxComboMultiplier = 4;
     public Text scoreText;
     public Text comboText;
+    public Text finalScoreText;
 
     private float score;
     private int combo;
@@ -43,6 +44,7 @@ public class ScoreUI : MonoBehaviour
     {
         scoreText.text = "Score:\n" + score;
         comboText.text = "Combo:\n" + combo;
+        finalScoreText.text = "Final Score:\n" + score;
         if (combo >= comboInterval * 4)
         {
             comboText.color = Color.magenta;
