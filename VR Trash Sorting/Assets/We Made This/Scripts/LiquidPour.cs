@@ -23,22 +23,30 @@ public class LiquidPour : MonoBehaviour
 
     void OnTriggerStay(Collider other)
     {
-        if(other.CompareTag("Disposal") && Vector3.Dot(transform.forward, Vector3.down) > 0 && liquidCapacity > 0)
-        {
-            if(partsys.isStopped)
-                partsys.Play();
+        
+        if(other.CompareTag("Disposal"))
+        {   // Test if object is upside down (althoug we use forward vector here because objects have blender coordinates
+            if (Vector3.Dot(transform.forward, Vector3.down) > 0 && liquidCapacity > 0)
+            {
+                // only play if not playing
+                if (partsys.isStopped)
+                    partsys.Play();
 
-            liquidCapacity -= Time.deltaTime;
-        }
-        else
-        {
-            partsys.Stop();
+                //Debug.Log(liquidCapacity + " - " + Time.deltaTime);
+                liquidCapacity -= Time.deltaTime;
+            }
+            else
+            {
+                partsys.Stop();
+            }
         }
     }
 
     private void OnTriggerExit(Collider other)
     {
-        partsys.Stop();
+        // Stop when leaving trigger (deals with edge case)
+        if(other.CompareTag("Disposal"))
+            partsys.Stop();
     }
 
     public void Squish()
